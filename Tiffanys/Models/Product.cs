@@ -24,12 +24,26 @@ namespace Tiffanys.Models
 
         public ICollection<Item> Items { get; set; }
 
-        private static double TotalRevenue { get; set; }
-        private static double TotalCost { get; set; }
+        public static double TotalRevenue { get; set; }
+        public static double TotalCost { get; set; }
 
         public Product()
         {
             
         }
+
+		public Product(string name, double cost, double retailPrice)
+		{
+            this.Name = name;
+            this.Cost = cost;
+            this.RetailPrice = retailPrice;
+		}
+
+
+		public double Commission()
+        {
+            return this.RetailPrice * 0.1;
+        }
     }
+
 }

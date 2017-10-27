@@ -17,5 +17,10 @@ namespace Tiffanys.Models
         {
             
         }
+		public AssociateItem(int associateId, int itemId)
+		{
+            this.AssociateId = associateId;
+            this.ItemId = itemId;
+		}
     }
 }

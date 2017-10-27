@@ -1,10 +1,39 @@
-﻿
-@model Tiffanys.Models.Associate
+﻿@model IEnumerable<Tiffanys.Models.Item>
 
 @using System.Security.Claims
 
 <h2>@User.Identity.Name Profile</h2>
 <hr/>
 
-@Model.TotalSales
-@Model.TotalReturns
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Inventory</h2>
+
+<div class="click-me">hi!</div>
+
+<p>@ViewBag.Associate.AssociateId</p>
+
+<div class="sold-output"></div>
+	
+@foreach (var item in Model)
+{
+
+
+<div class="sell-items">
+    <form asp-action="SoldItem" class="sold-item">
+	    <input type="hidden" name="associateId" value="@ViewBag.Associate.AssociateId"/>
+        <input type="hidden" name="itemId" value="@item.ItemId"/>
+        <div class="card">
+            <div class="card-block">
+                <p>@item.Product.Name</p>
+                <p>$@item.Product.RetailPrice</p>
+
+                <button class="sold-button" type="submit">Sell</button>
+            </div>
+        </div>
+    </form>
+</div>
+}
+

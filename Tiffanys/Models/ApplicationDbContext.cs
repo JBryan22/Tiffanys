@@ -14,6 +14,7 @@ namespace Tiffanys.Models
 		public DbSet<Associate> Associates { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<AssociateItem> AssociateItems { get; set; }
 
 
 		protected override void OnModelCreating(ModelBuilder builder)

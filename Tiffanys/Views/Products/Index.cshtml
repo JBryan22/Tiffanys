@@ -1,0 +1,16 @@
+﻿@model Tiffanys.Models.Product
+
+<div id="output">
+
+</div>
+
+<form action="NewProduct" class="new-product">
+    <label>Product Name:</label>
+    @Html.TextBoxFor(x => x.Name, new{@class="inputField"})
+    <label>Product Cost: </label>
+    @Html.TextBoxFor(x => x.Cost, new{@class="inputField"})
+    <label>Retail Price:</label>
+    @Html.TextBoxFor(x => x.RetailPrice, new{@class="inputField"})
+    <input type="submit" value="Add" class="btn btn-default" />
+</form>
+

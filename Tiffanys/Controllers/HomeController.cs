@@ -1,35 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Tiffanys.Models;
 
 namespace Tiffanys.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public HomeController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext db)
         {
-            return View();
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _db = db;
         }
 
-        public IActionResult About()
+		public IActionResult Index()
         {
-            ViewData["Message"] = "Your application description page.";
+			
+            var allItems = _db.Items.Where(m => m.Sold == false).Include(m => m.Product).ToList();
 
-            return View();
+            return View(allItems);
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
-        }
     }
 }

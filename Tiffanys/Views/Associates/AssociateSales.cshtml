@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Tiffanys.Models.Item>
+
+<h1>Associate Sales</h1>
+
+@foreach(var item in Model)
+{
+    <p>@item.Product.Name</p>
+}

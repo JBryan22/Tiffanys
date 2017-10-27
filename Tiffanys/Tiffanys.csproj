@@ -28,10 +28,15 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Associates\" />
+    <Folder Include="Views\Products\" />
 </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
   </ItemGroup>
  
+  <ItemGroup>
+    <Compile Remove="Migrations\20171026204546_SeedDatabaeItems.cs" />
+    <Compile Remove="Migrations\20171026204546_SeedDatabaeItems.Designer.cs" />
+  </ItemGroup>
 </Project>
